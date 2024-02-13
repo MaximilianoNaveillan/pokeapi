@@ -1,0 +1,151 @@
+@import url('https://fonts.cdnfonts.com/css/pokemon-solid');
+
+html,body{
+    margin: 0;
+}
+body {
+   
+    font-family: 'Pokemon Solid', sans-serif;
+    -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+    height: 100vh;
+    overflow: hidden;
+}
+*{
+    box-sizing: border-box;
+}
+
+button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    height: 50px;
+    cursor:pointer;
+  }
+
+.wrapper {
+    display: flex;
+    max-height: 100%;
+   
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Hace que la columna completa sea escrolleable si excede la altura */
+}
+
+.sidebar {
+    background: linear-gradient(to bottom, #1e5799 0%, #00c6ff 100%);
+
+    color: white;
+    width: 300px;
+    
+    min-height: 100%;
+    overflow-y: auto;
+}
+
+.sidelbar-title{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: rgba(255,255,255,0.4);
+    width: 100%;
+    height: 60px;
+    color:yellow;
+}
+
+.sidelbar-title > button{
+    background-color: transparent;
+    
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 20px;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: white;
+    
+}
+
+.pokemon-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 23px;
+}
+
+.pokemon-item img {
+    align-self: flex-end; /* Alinea la imagen a la derecha */
+}
+
+.content {
+    flex-grow: 1;
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    height: 100vh;
+}
+
+header {
+    background-color:  #cf2835;
+    color: white;
+    text-align: center;
+    margin:0;
+}
+
+header > h1 {
+    margin: 0;
+    line-height: 50px;
+    font-size: 26px;
+}
+
+main {
+    background-image: url("./poke-background.png"); 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.capture {
+    background-image: url("./pokeball.gif");
+}
+
+.capture > .card {
+    visibility: hidden ;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    margin:auto;
+    text-align: center;
+    min-height: 100%;
+}
+
+.card > button{
+    height:60px;
+    font-size: 26px;
+    background-color:  #cf2835; /* Green */
+    color: yellow;
+}
+
+#pokemon-image{
+    margin-top: 60px;;
+    min-height: 180px;
+    height:180px;
+    margin-bottom: 50px;
+}
+
