@@ -58,34 +58,38 @@ function esCapturarPokemon() {
 // Función para limpiar la lista de Pokémon capturados
 function clearPokemon() {
     pokemonCapturados = []
+    localStorage.removeItem('pokemonCapturados')
     obtenerListaPokemonCapturados(); // Actualizar la lista de Pokémon capturados
 }
 
 // Función para guardar un Pokémon capturado en el almacenamiento local
+// operador terciario ===> ! [undefined o null o 0 NaN ] ? bloque cumple : bloque no cumple
+// Operador lógicol ===> if(tal || tal ) ==> if (tal && tal) ==>
+// Operador de función null ==> evalua solo valor null ==> !null cumple ejecuta cumple || no cumple
+
 function guardarPokemonCapturado(pokemonData) {
-    
-    pokemonCapturados.push(pokemonData);
+
+    const {name,sprites} = pokemonData;
+
+    pokemonCapturados = JSON.parse(localStorage.getItem('pokemonCapturados')) || []
+    pokemonCapturados.push({name,sprites});
+    localStorage.setItem('pokemonCapturados',JSON.stringify(pokemonCapturados))
 }
 
 // Función para obtener y mostrar la lista de Pokémon capturados
 function obtenerListaPokemonCapturados() {
     pokemonList.innerHTML = ''; // Limpiar contenido actual de la lista
 
+    pokemonCapturados = JSON.parse(localStorage.getItem('pokemonCapturados')) || [];
+
+    
     // Para cada Pokémon capturado, crear un elemento de lista con nombre e imagen
     pokemonCapturados.forEach(pokemonData => {
-        const listItem = document.createElement('li');
-        const spanName = document.createElement('span');
-        const img = document.createElement('img');
-
-        listItem.className = 'pokemon-item';
-
-        spanName.textContent = pokemonData.name;
-        img.src = pokemonData.sprites.front_default;
-        img.alt = pokemonData.name;
-
-        listItem.appendChild(spanName);
-        listItem.appendChild(img);
-        pokemonList.appendChild(listItem);
+        const {name, sprites} = pokemonData;
+        console.log(pokemonData);
+        pokemonList.innerHTML += `<li class='pokemon-item'><span>${name}</span>
+        <img src='${sprites.front_default}' alt='${name}'></img>
+        </li>`;
     });
 }
 
